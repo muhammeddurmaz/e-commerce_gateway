@@ -4,14 +4,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: product-service
-          uri: lb://product-service
-          predicates:
-            - Path=/api/**
         - id: order-service
           uri: lb://order-service
           predicates:
-            - Path=/api/**
+            - Path=/api/orders/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/products/**
       discovery:
         locator:
           enabled: true
